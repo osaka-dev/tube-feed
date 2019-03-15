@@ -1,14 +1,22 @@
 import React, {Component} from 'react';
+import {BrowserRouter as Router,Route,Switch} from 'react-router-dom'
+import {Provider} from 'react-redux'
 import HeaderContainer from './components/container/HeaderContainer'
+import TestContainer from './components/container/TestContainer'
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-            <HeaderContainer/>
-        </header>
-      </div>
+      <Provider store={this.props.store}>
+        <Router>
+          <div>
+            <Switch>
+              <Route path='/Test' component={TestContainer}/>
+              <Route path='/' component={HeaderContainer}/>
+            </Switch>
+          </div>
+        </Router>
+      </Provider>
     );
   }
 }
