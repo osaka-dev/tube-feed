@@ -1,14 +1,8 @@
-import { takeEvery } from 'redux-saga/effects'
-import { LOGIN } from '../actions/auth'
-
-function* loginInternal(action) {
-    yield new Promise(resolve => {
-        setTimeout(()=>{
-            resolve();
-        },3000);
-    });
-}
+import { all } from 'redux-saga/effects';
+import authSagas from './auth';
 
 export default function* rootSaga() {
-    yield takeEvery(LOGIN,loginInternal);
+	yield all([
+		...authSagas,
+	])
 }

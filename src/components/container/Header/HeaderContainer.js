@@ -9,7 +9,7 @@ import Button from "@material-ui/core/Button";
 import MenuIcon from "@material-ui/icons/Menu";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { login } from "../../../actions/auth";
+import { startLogin } from "../../../actions/auth";
 import Drawer from "@material-ui/core/Drawer";
 import Divider from "@material-ui/core/Divider";
 import List from "@material-ui/core/List";
@@ -29,11 +29,6 @@ class HeaderContainer extends Component {
 
   constructor(props) {
     super(props);
-  }
-
-  componentDidMount() {
-    console.log("isLogin", this.props.isLogin);
-    this.props.login();
   }
 
   handleDrawerOpen = () => {
@@ -68,7 +63,7 @@ class HeaderContainer extends Component {
             <Typography variant="h6" color="inherit" className={classes.grow}>
               News
             </Typography>
-            <Button color="inherit">Login</Button>
+            <Button color="inherit" onClick={this.props.startLogin}>Login</Button>
           </Toolbar>
         </AppBar>
         <Drawer
@@ -126,7 +121,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return bindActionCreators(
     {
-      login
+      startLogin
     },
     dispatch
   );
