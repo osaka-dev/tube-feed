@@ -51,7 +51,7 @@ class HeaderContainer extends Component {
           position="fixed"
           className={classNames(classes.appBar, {[classes.appBarShift]: open})}
         >
-          <Toolbar disableGutters={!open}>
+          <Toolbar>
             <IconButton
               className={classNames(classes.menuButton, open && classes.hide)}
               color="inherit"
