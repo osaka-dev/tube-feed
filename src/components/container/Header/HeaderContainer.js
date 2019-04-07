@@ -52,24 +52,27 @@ class HeaderContainer extends Component {
           className={classNames(classes.appBar, {[classes.appBarShift]: open})}
         >
           <Toolbar>
-            <IconButton
-              className={classNames(classes.menuButton, open && classes.hide)}
-              color="inherit"
-              aria-label="Open drawer"
-              onClick={this.handleDrawerOpen}
-            >
-              <MenuIcon />
-            </IconButton>
             <Typography variant="h6" color="inherit" className={classes.grow}>
               News
             </Typography>
-            <Button color="inherit" onClick={this.props.startLogin}>Login</Button>
+            {
+              (this.props.isLogin) === true ?
+              <IconButton
+                className={classNames(classes.menuButton, open && classes.hide)}
+                color="inherit"
+                aria-label="Open drawer"
+                onClick={this.handleDrawerOpen}
+              >
+                <MenuIcon />
+              </IconButton> :
+                <Button color="inherit" onClick={this.props.startLogin}>Login</Button>
+            }
           </Toolbar>
         </AppBar>
         <Drawer
           className={classes.drawer}
           variant="persistent"
-          anchor="left"
+          anchor="right"
           open={open}
           classes={{
             paper: classes.drawerPaper
